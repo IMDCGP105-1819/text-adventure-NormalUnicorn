@@ -1,0 +1,24 @@
+number of rooms = 10(Victory room)
+
+1 2 3
+4 5 6
+7 8 9
+
+room 5 = starting room, can only access room 4 at first, there is a chisel in this room to pick up,
+         used to carve on walls later, also map that shows the rooms
+room 4 = can access room 1, 7, 5, puzzle of scratches on wall (Fibonacci numbers)
+room 1 = riddle :) I went to the woods and got it, I couldn't get it, so I left it there and took it with me, what am I? Splinter
+room 7 = filled with barrels that can be moved, you have to move them between rooms, barrels are empty like they'd float
+room 2 = lake, need the barrels to be moved over the lake to cross it
+room 3 =
+room 8 =
+
+
+ITEMS:
+Map - Can inspect the map, has an indicator for where you are, and labels each room
+
+Pen - used to update the map, everytime you find a new room you can use the pen to update the map to include the new room
+
+Chisel - Can be used to carve on the wall, this is used for rooms 4, 1
+
+Barrels - Found in room 7, can be moved to room 2 and put in the water to allow you to cross
