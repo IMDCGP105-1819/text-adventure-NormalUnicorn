@@ -4,9 +4,15 @@ class room1:
 
     def travel(self, inputs):
         if inputs in self.directions:
-            print("You can travel " + inputs)
+            return "You can travel " + inputs
         else:
-            print("You cannot travel" + inputs)
+            return "You cannot travel "  + inputs
 
-player = room1()
-player.travel("west")
+    def location(self):
+        return "You are currently in room 1"
+
+
+room = room1()
+direction_input = input("Please enter which direction you want to travel in")
+print(room.travel(direction_input))
+print(room.location())
