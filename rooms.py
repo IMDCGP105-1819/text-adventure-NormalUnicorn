@@ -1,7 +1,12 @@
 class room1:
-    def __init__(self, names):
-        self.name = names
+    def __init__(self):
+        self.directions = ["North", "South", "East", "West"]
 
+    def travel(self, inputs):
+        if inputs in self.directions:
+            print("You can travel " + inputs)
+        else:
+            print("You cannot travel" + inputs)
 
-bob = room1("James")
-print(bob.name)
+player = room1()
+player.travel("west")
