@@ -4,15 +4,43 @@ class room1:
 
     def travel(self, inputs):
         if inputs in self.directions:
-            return "You can travel " + inputs
+            return True
         else:
-            return "You cannot travel "  + inputs
+            return False
 
     def location(self):
         return "You are currently in room 1"
 
+    def look(self):
+        return "You look around the room and this function message will change depening on the room"
+
 
 room = room1()
-direction_input = input("Please enter which direction you want to travel in")
-print(room.travel(direction_input))
-print(room.location())
+
+def choice():
+    try:
+        choices = int(input("""What do you want to do? \n0-Find out which room you are currently in \n1-Travel somewhere else \n2-Look around the room \n3-Interact with the room \n4-quit"""))
+    except ValueError:
+        print("Please enter an interger Value")
+    if choices < 0 or choices > 5:
+        raise Exception("That value isn't an option!")
+
+    if choices == 0:
+        print(room.location())
+    elif choices == 1:
+        try:
+            direction_input = str(input("Please enter what direction you would like to travel"))
+        except ValueError:
+            print("Please enter a string value")
+
+        if room.location(direction_input) == True:
+            print("You can travel " + direction_input)
+        else:
+            print("You cannot travel " + direction_input)
+
+    elif choices == 2:
+        print(room.look())
+
+    choice()
+
+choice()
