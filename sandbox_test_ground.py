@@ -1,8 +1,8 @@
-class test:
+class test(object):
     def __init__(self):
-        self.rooms = {1:'y', 2:'n', 3:'n', 4:'y'}
+        self.rooms = {1:'y', 2:'n', 3:'n', 4:'y'};
 
-    def draw(self,rooms):
+    def draw(self):
         for x in range(0,9):
             value = rooms.value(x+1)
             if value == 'y':
@@ -12,5 +12,4 @@ class test:
                 x=15
 
 r = test
-print(r[rooms])
-r.draw(r,r.rooms)
+r.draw(r)

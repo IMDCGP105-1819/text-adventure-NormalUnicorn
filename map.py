@@ -1,4 +1,4 @@
-class map:
+class map(object):
 
     def __init__(self):
             self.rooms = {1:"y", 2:"n", 3:"n", 4:"n", 5:"n", 6:"n", 7:"n", 8:"n", 9:"n"}
