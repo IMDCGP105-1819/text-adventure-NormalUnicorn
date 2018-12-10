@@ -21,6 +21,9 @@ class room2():
         def room_name():
             print("You are currently in room 2")
 
+        def look(self):
+            return "You look around the room and this function message will change depening on the room"
+
 class room3():
     def __init__(self):
         self.directions = ["west", "w", "south", "s"]
@@ -29,6 +32,9 @@ class room3():
 
         def room_name():
             print("You are currently in room 3")
+
+        def look(self):
+            return "You look around the room and this function message will change depening on the room"
 
 
 # MIDDLE ROW OF ROOMS
@@ -41,6 +47,9 @@ class room4():
         def room_name():
             print("You are currently in room 4")
 
+        def look(self):
+            return "You look around the room and this function message will change depening on the room"
+
 
 class room5():
     def __init__(self):
@@ -51,6 +60,9 @@ class room5():
         def room_name():
             print("You are currently in room 5")
 
+        def look(self):
+            return "You look around the room and this function message will change depening on the room"
+
 
 class room6():
     def __init__(self):
@@ -60,6 +72,9 @@ class room6():
 
         def room_name():
             print("You are currently in room 6")
+
+        def look(self):
+            return "You look around the room and this function message will change depening on the room"
 
 
 # BOTTOM ROW OF ROOMS
@@ -72,6 +87,9 @@ class room7():
         def room_name():
             print("You are currently in room 7")
 
+        def look(self):
+            return "You look around the room and this function message will change depening on the room"
+
 
 class room8():
     def __init__(self):
@@ -82,6 +100,9 @@ class room8():
         def room_name():
             print("You are currently in room 8")
 
+        def look(self):
+            return "You look around the room and this function message will change depening on the room"
+
 
 class room9():
     def __init__(self):
@@ -91,3 +112,6 @@ class room9():
 
         def room_name():
             print("You are currently in room 9")
+
+        def look(self):
+            return "You look around the room and this function message will change depening on the room"
