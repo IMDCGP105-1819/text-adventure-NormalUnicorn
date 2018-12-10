@@ -1,9 +1,18 @@
 import rooms
 import player
+# Create an instance of the room class that the player is in
 current_room = rooms.room5()
+
 user = player.Player()
 choice = ""
 
+
+"""
+The function move works by taking a user input in,
+checking if the input value is valid area to move to,
+then updates the player co ordinates to represent the movement.
+The function then calls update_room to update the current_room instance
+"""
 def move():
     # Takes in user to update their position, and room to check where you can move to
     global current_room
@@ -29,10 +38,14 @@ def move():
         # This else is in case the user puts in a value that isn't possible to be moved to
     current_room = update_room()
 
+
+"""
+The update_room function is called after the player has moved in the move function
+update_room goes through all possible 9 co ordinate locations to check if the co ords are the same as the player position
+if room co ords and player co ords are the same, the current_room variable instance is updated to reflect the new room the player is in
+"""
 def update_room():
     global current_room
-
-    #Looks at the x value of the player then looks at the y value to find the correct room
 
     if user.x == 1:
         if user.y == 1:
@@ -60,14 +73,27 @@ def update_room():
 
     return current_room
 
+"""Help function that prints out all available commands"""
+#TODO try and make this command be responsive as some commands canno always be executed
+def help():
+    print("This is a list of available commands:")
+
+
+"""
+This while loop is the game running
+It takes a user input in to then work out what the corresponding function is to execute the task the user input
+"""
 while choice != "q":
     try:
-        choice = str(input("What action would you like to do?"))
+        choice = str(input("What action would you like to do? \n"))
         #This is just fucking movement
         if choice == "move":
             move()
         elif choice == "pos" or choice == "position":
-            print(user.x, user.y)
-
+            print(user.x, user.y, "\n")
+        elif choice == "--help":
+            help()
+        else:
+            print("That isn't a valid command, enter --help to see available commands")
     except ValueError:
-        print("That isn't a valid command, enter help to see available commands")
+        print("That isn't a valid command, enter --help to see available commands")
