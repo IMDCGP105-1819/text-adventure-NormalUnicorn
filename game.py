@@ -1,63 +1,72 @@
 import rooms
 import player
-room = rooms.room1()
-#This file will be used to store all the game logic in and other files will be imported into here
-# def choice():
-#     try:
-#         choices = int(input("""What do you want to do? \n0-Find out which room you are currently in \n1-Travel somewhere else \n2-Look around the room \n3-Interact with the room \n4-quit"""))
-#     except ValueError:
-#         print("Please enter an interger Value")
-#     if choices < 0 or choices > 5:
-#         print("We don't accept that value")
-#         choice()
-#     elif choices == 0:
-#         print(room.location())
-#     elif choices == 1:
-#         try:
-#             direction_input = str(input("Please enter what direction you would like to travel"))
-#         except ValueError:
-#             print("Please enter a string value")
-#
-#         if room.location(direction_input) == True:
-#             print("You can travel " + direction_input)
-#         else:
-#             print("You cannot travel " + direction_input)
-#
-#     elif choices == 2:
-#         print(room.look())
-#
-#     elif choice == 4:
-#         quit()
-#
-#     choice()
-#
-# choice()
-
-import six
+current_room = rooms.room5()
 user = player.Player()
 choice = ""
+
+def move():
+    # Takes in user to update their position, and room to check where you can move to
+    global current_room
+    try:
+        direction = str(input("Please enter a direction to move"))
+        direction = direction.lower()
+        if direction == "c":
+            return None
+        elif direction in current_room.directions:
+            if direction == "north" or direction == "n":
+                user.y += 1
+            elif direction == "south" or direction == "s":
+                user.y -= 1
+            elif direction == "east" or direction == "e":
+                user.x += 1
+            elif direction == "west" or direction == "w":
+                user.x += -1
+        else:
+            print("You cannot move there!")
+            move()
+    except ValueError:
+            print("That value isn't recognised sorry")
+        # This else is in case the user puts in a value that isn't possible to be moved to
+    current_room = update_room()
+
+def update_room():
+    global current_room
+
+    #Looks at the x value of the player then looks at the y value to find the correct room
+
+    if user.x == 1:
+        if user.y == 1:
+            current_room = rooms.room7()
+        elif user.y == 2:
+            current_room=rooms.room4()
+        elif user.y==3:
+            current_room=rooms.room1()
+
+    elif user.x == 2:
+        if user.y == 1:
+            current_room=rooms.room8()
+        if user.y==2:
+            current_room=rooms.room5()
+        if user.y==3:
+            current_room=rooms.room2()
+
+    elif user.x == 3:
+        if user.y == 1:
+            current_room = rooms.room9()
+        elif user.y == 2:
+            current_room = rooms.room6()
+        elif user.y == 3:
+            current_room = rooms.room3()
+
+    return current_room
+
 while choice != "q":
     try:
         choice = str(input("What action would you like to do?"))
+        #This is just fucking movement
         if choice == "move":
-            try:
-                direction = str(input("Please enter a direction to move"))
-                direction = direction.lower()
-                if direction in room.directions:
-                    if direction == "north" or direction == "n":
-                        user.y += 1
-                    elif direction == "south" or direction == "s":
-                        user.y -= 1
-                    elif direction == "east" or direction == "e":
-                        user.x += 1
-                    elif direction == "west" or direction == "w":
-                        user.x += -1
-                else:
-                    print("That value isn't recognised sorry")
-            except ValueError:
-                print("That value isn't recognised sorry")
-
-        elif choice == "pos" or "position":
+            move()
+        elif choice == "pos" or choice == "position":
             print(user.x, user.y)
 
     except ValueError:
