@@ -2,26 +2,27 @@ class Player(object):
     def __init__(self):
         self.x = 2
         self.y = 2
-        self.inventory = {"map":"y", "barrel":"n"}
-
-    def current_inventory(self, inventory, item):
-        item = item.lower()
-        if item in self.inventory:
-            if self.inventory[item] == "n":
-                self.inventory[item] == "y"
-                print("you now have access to " + item)
-            elif self.inventory[item] == "y":
-                print("you already have access to that item!")
+        self.inventory_tracker = {"map":"y", "barrel":"n"}
+        self.inventory = []
 
 
+
+    """
+    this function works by taking in the item the user wants to use and their current inventory
+    it checks if they have access to the item or not
+    currently it allows the user access if they don't have access for testing purposes
+    """
+    #TODO if the user inputs an item that isn't in their inventory let them know
+    def current_inventory(self, inventory):
+        for item in self.inventory_tracker:
+            if self.inventory_tracker[item] == "n":
+                return None
+            elif self.inventory_tracker[item] == "y":
+                self.inventory.append(item)
+
+        print(self.inventory)
+    """
+    This function returns the user x y position
+    """
     def map(self):
-        if self.inventory["map"] == "n":
-            print("You currently do not have access to the map sorry!")
-            return None
         return(self.x, self.y)
-
-
-
-x = Player()
-x.current_inventory(x.inventory,"map")
-x.map()

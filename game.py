@@ -75,6 +75,16 @@ def update_room():
 
     print("You have moved to " + current_room.room_name() + "\n")
 
+
+def item():
+    global user
+    try:
+        input_item = input("Please enter what item you would like to use")
+        if input_item == "map":
+            print(user.map())
+    except ValueError:
+        print("That isn't a proper value")
+
 """Help function that prints out all available commands"""
 #TODO try and make this command be responsive as some commands canno always be executed
 def help():
@@ -91,8 +101,8 @@ while choice != "q":
         #This is just fucking movement
         if choice == "move":
             move()
-        elif choice == "map":
-            print(user.map(), "\n")
+        elif choice == "inv" or choice == "i" or choice == "inventory":
+            item()
         elif choice == "--help":
             help()
         elif choice == "q":
