@@ -6,11 +6,12 @@ class room1(object):
         self.x = 1
         self.y = 3
 
-    def room_name():
-        print("You are currently in room 1")
+    def room_name(self):
+        return "room 1"
 
     def look(self):
         return "You look around the room and this function message will change depening on the room"
+
 
 class room2():
     def __init__(self):
@@ -18,11 +19,12 @@ class room2():
         self.x = 2
         self.y = 3
 
-        def room_name():
-            print("You are currently in room 2")
+    def room_name(self):
+        return "room 2"
 
-        def look(self):
-            return "You look around the room and this function message will change depening on the room"
+    def look(self):
+        return "You look around the room and this function message will change depening on the room"
+
 
 class room3():
     def __init__(self):
@@ -30,11 +32,11 @@ class room3():
         self.x = 3
         self.y = 3
 
-        def room_name():
-            print("You are currently in room 3")
+    def room_name(self):
+        return "room 3"
 
-        def look(self):
-            return "You look around the room and this function message will change depening on the room"
+    def look(self):
+        return "You look around the room and this function message will change depening on the room"
 
 
 # MIDDLE ROW OF ROOMS
@@ -44,11 +46,11 @@ class room4():
         self.x = 1
         self.y = 2
 
-        def room_name():
-            print("You are currently in room 4")
+    def room_name(self):
+        return "room 4"
 
-        def look(self):
-            return "You look around the room and this function message will change depening on the room"
+    def look(self):
+        return "You look around the room and this function message will change depening on the room"
 
 
 class room5():
@@ -57,11 +59,11 @@ class room5():
         self.x = 2
         self.y = 2
 
-        def room_name():
-            print("You are currently in room 5")
+    def room_name(self):
+        return "room 5"
 
-        def look(self):
-            return "You look around the room and this function message will change depening on the room"
+    def look(self):
+        return "You look around the room and this function message will change depening on the room"
 
 
 class room6():
@@ -70,11 +72,12 @@ class room6():
         self.x = 3
         self.y = 2
 
-        def room_name():
-            print("You are currently in room 6")
+    def room_name(self):
+        return "room 6"
 
-        def look(self):
-            return "You look around the room and this function message will change depening on the room"
+    def look(self):
+        return "You look around the room and this function message will change depening on the room"
+
 
 
 # BOTTOM ROW OF ROOMS
@@ -84,11 +87,11 @@ class room7():
         self.x = 1
         self.y = 1
 
-        def room_name():
-            print("You are currently in room 7")
+    def room_name(self):
+        return "room 7"
 
-        def look(self):
-            return "You look around the room and this function message will change depening on the room"
+    def look(self):
+        return "You look around the room and this function message will change depening on the room"
 
 
 class room8():
@@ -97,11 +100,11 @@ class room8():
         self.x = 2
         self.y = 1
 
-        def room_name():
-            print("You are currently in room 8")
+    def room_name(self):
+        return "room 8"
 
-        def look(self):
-            return "You look around the room and this function message will change depening on the room"
+    def look(self):
+        return "You look around the room and this function message will change depening on the room"
 
 
 class room9():
@@ -110,8 +113,8 @@ class room9():
         self.x = 3
         self.y = 1
 
-        def room_name():
-            print("You are currently in room 9")
+    def room_name(self):
+        return "room 9"
 
-        def look(self):
-            return "You look around the room and this function message will change depening on the room"
+    def look(self):
+        return "You look around the room and this function message will change depening on the room"
