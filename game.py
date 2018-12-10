@@ -1,9 +1,11 @@
 import rooms
 import player
+
 # Create an instance of the room class that the player is in
 current_room = rooms.room5()
 
 user = player.Player()
+
 choice = ""
 
 
@@ -30,12 +32,12 @@ def move():
                 user.x += 1
             elif direction == "west" or direction == "w":
                 user.x += -1
+        # This else is in case the user puts in a value that isn't possible to be moved to
         else:
-            print("You cannot move there!")
+            print("You cannot move there!\n")
             move()
     except ValueError:
-            print("That value isn't recognised sorry")
-        # This else is in case the user puts in a value that isn't possible to be moved to
+            print("That value isn't recognised sorry\n")
     current_room = update_room()
 
 
@@ -71,12 +73,12 @@ def update_room():
         elif user.y == 3:
             current_room = rooms.room3()
 
-    return current_room
+    print("You have moved to " + current_room.room_name() + "\n")
 
 """Help function that prints out all available commands"""
 #TODO try and make this command be responsive as some commands canno always be executed
 def help():
-    print("This is a list of available commands:")
+    print("This is a list of available commands:\n")
 
 
 """
@@ -85,15 +87,17 @@ It takes a user input in to then work out what the corresponding function is to 
 """
 while choice != "q":
     try:
-        choice = str(input("What action would you like to do? \n"))
+        choice = str(input("What action would you like to do?"))
         #This is just fucking movement
         if choice == "move":
             move()
-        elif choice == "pos" or choice == "position":
-            print(user.x, user.y, "\n")
+        elif choice == "map":
+            print(user.map(), "\n")
         elif choice == "--help":
             help()
+        elif choice == "q":
+            print("Bye Bye World")
         else:
-            print("That isn't a valid command, enter --help to see available commands")
+            print("That isn't a valid command, enter --help to see available commands\n")
     except ValueError:
-        print("That isn't a valid command, enter --help to see available commands")
+        print("That isn't a valid command, enter --help to see available commands\n")
