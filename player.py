@@ -3,7 +3,7 @@ class Player(object):
         self.x = 2
         self.y = 2
         self.inventory_tracker = {"map":"y", "barrel":"n"}
-        self.inventory = []
+        self.inventory = ["map"]
 
 
 
