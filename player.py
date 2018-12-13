@@ -25,5 +25,8 @@ class Player(object):
     """
     This function returns the user x y position
     """
+
+
+
     def map(self):
         return(self.x, self.y)

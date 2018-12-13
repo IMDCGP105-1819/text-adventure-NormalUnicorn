@@ -90,6 +90,22 @@ def puzzle():
     global current_room
     current_room.puzzle()
 
+
+def pickup():
+    global current_room
+    global user
+    input_item = str(input("please enter an item to pick up")).lower()
+    if input_item in current_room.items:
+        if input_item in user.inventory_tracker:
+            if user.inventory_tracker[input_item] == "n":
+                user.inventory_tracker[input_item] == "y"
+                user.inventory.append(input_item)
+                print("You picked up " + input_item)
+            else:
+                print("You already have " + input_item)
+    else:
+        print("You cannot pick up that item!")
+
 """Help function that prints out all available commands"""
 #TODO try and make this command be responsive as some commands canno always be executed
 def help():
@@ -110,6 +126,8 @@ while choice != "q":
             item()
         elif choice == "puzzle":
             puzzle()
+        elif choice == "pickup" or choice == "p" or choice == "pickup item":
+            pickup()
         elif choice == "--help":
             help()
         elif choice == "q":
