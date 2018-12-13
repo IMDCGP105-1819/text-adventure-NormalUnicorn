@@ -127,6 +127,14 @@ def drop():
     except ValueError:
         print("That is not a recognised value!")
 
+def inventory():
+    global user
+    print(user.inventory)
+
+def room_items():
+    global current_room
+    print(current_room.items)
+
 """Help function that prints out all available commands"""
 #TODO try and make this command be responsive as some commands canno always be executed
 def help():
@@ -144,7 +152,9 @@ while choice != "q":
         if choice == "move":
             move()
         elif choice == "inv" or choice == "i" or choice == "inventory":
-            item()
+            inventory()
+        elif choice == "room items" or choice == "r i":
+            room_items()
         elif choice == "puzzle":
             puzzle()
         elif choice == "drop" or choice == "d":

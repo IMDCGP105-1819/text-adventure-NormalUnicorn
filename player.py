@@ -14,14 +14,7 @@ class Player(object):
     """
     #TODO if the user inputs an item that isn't in their inventory let them know
     #This whole function is a TODO
-    def current_inventory(self, inventory):
-        for item in self.inventory_tracker:
-            if self.inventory_tracker[item] == "n":
-                return None
-            elif self.inventory_tracker[item] == "y":
-                self.inventory.append(item)
-
-        print(self.inventory)
+    
     """
     This function returns the user x y position
     """
