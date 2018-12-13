@@ -13,6 +13,7 @@ class Player(object):
     currently it allows the user access if they don't have access for testing purposes
     """
     #TODO if the user inputs an item that isn't in their inventory let them know
+    #This whole function is a TODO
     def current_inventory(self, inventory):
         for item in self.inventory_tracker:
             if self.inventory_tracker[item] == "n":

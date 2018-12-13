@@ -22,7 +22,7 @@ def move():
         direction = str(input("Please enter a direction to move"))
         direction = direction.lower()
         if direction == "c":
-            return None
+            return "placeholder text"
         elif direction in current_room.directions:
             if direction == "north" or direction == "n":
                 user.y += 1
@@ -38,8 +38,8 @@ def move():
             move()
     except ValueError:
             print("That value isn't recognised sorry\n")
-    current_room = update_room()
 
+    update_room()
 
 """
 The update_room function is called after the player has moved in the move function
@@ -85,6 +85,11 @@ def item():
     except ValueError:
         print("That isn't a proper value")
 
+
+def puzzle():
+    global current_room
+    current_room.puzzle()
+
 """Help function that prints out all available commands"""
 #TODO try and make this command be responsive as some commands canno always be executed
 def help():
@@ -103,6 +108,8 @@ while choice != "q":
             move()
         elif choice == "inv" or choice == "i" or choice == "inventory":
             item()
+        elif choice == "puzzle":
+            puzzle()
         elif choice == "--help":
             help()
         elif choice == "q":

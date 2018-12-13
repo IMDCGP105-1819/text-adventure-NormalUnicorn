@@ -12,6 +12,16 @@ class room1(object):
     def look(self):
         return "You look around the room and this function message will change depening on the room"
 
+    def puzzle(self):
+        print("In the room you see a laptop on a table. On the laptop screen is a riddle: \nI went to the woods and I got it \nI couldn't get it \nSo I left it there \nAnd took it home with me. \n What is it?")
+        try:
+            ans = str(input("")).lower()
+            if ans == "splinter" or ans == "a splinter":
+                print("Congratulations you have now solved this room!")
+            else:
+                print("That is an incorrect answer!")
+        except ValueError:
+            print("Please put in a correct value")
 
 class room2():
     def __init__(self):

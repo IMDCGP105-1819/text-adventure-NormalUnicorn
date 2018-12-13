@@ -1,5 +1,5 @@
-import rooms
+import player
 
-current_room = rooms.room8()
+x = player.Player()
 
-print(current_room.room_name())
+x.current_inventory(x.inventory)
