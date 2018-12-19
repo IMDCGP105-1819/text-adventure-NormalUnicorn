@@ -72,7 +72,7 @@ class room4():
 
 class room5():
     def __init__(self):
-        self.items = []
+        self.items = ["barrel"]
         self.directions = ["east", "e", "north", "n", "south", "s", "west", "w"]
         self.x = 2
         self.y = 2

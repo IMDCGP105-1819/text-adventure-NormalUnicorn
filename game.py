@@ -38,7 +38,7 @@ def move(direction):
             usage = direction_input[0]
             move(usage)
     except ValueError:
-            print("That value isn't recognised sorry\n")
+            print("That value isn't recognised!\n")
 
 
 
@@ -88,7 +88,7 @@ def use_item(input_item):
         else:
             print("You do not have that item!")
             item_input = str(input("Please enter an item to use:")).lower()
-            input_item = item_input.split()
+            input_item = item_input.split(" ")
             use_item(input_item[0])
     except ValueError:
         print("That isn't a proper value")
@@ -99,22 +99,28 @@ def puzzle():
     current_room.puzzle()
 
 
-def pickup_item():
+def pickup_item(input_item):
     global current_room
     global user
-    input_item = str(input("please enter an item to pick up:")).lower()
-    if input_item == "c":
-        return None
-    elif input_item in current_room.items:
-        if input_item in user.inventory_tracker:
-            if user.inventory_tracker[input_item] == "n":
-                user.inventory_tracker[input_item] == "y"
-                user.inventory.append(input_item)
-                print("You picked up " + input_item)
-            else:
-                print("You already have " + input_item)
-    else:
-        print("You cannot pick up that item!")
+    try:
+        if input_item == "c":
+            return None
+        elif input_item in current_room.items:
+                if user.inventory_tracker[input_item] == "n":
+                    user.inventory_tracker[input_item] == "y"
+                    user.inventory.append(input_item)
+                    current_room.items.remove(input_item)
+                    print("You picked up " + input_item)
+                else:
+                    print("You already have " + input_item)
+        else:
+            print("You cannot pick up that item!")
+            item_input = str(input("Please enter an item to pick up:")).lower()
+            input_item = item_input.split(" ")
+            pickup_item(input_item[0])
+    except ValueError:
+        print("That value isn't recognised!")
+
 
 
 def drop_item(input_item):
