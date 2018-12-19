@@ -106,13 +106,9 @@ def pickup_item(input_item):
         if input_item == "c":
             return None
         elif input_item in current_room.items:
-                if user.inventory_tracker[input_item] == "n":
-                    user.inventory_tracker[input_item] == "y"
                     user.inventory.append(input_item)
                     current_room.items.remove(input_item)
                     print("You picked up " + input_item)
-                else:
-                    print("You already have " + input_item)
         else:
             print("You cannot pick up that item!")
             item_input = str(input("Please enter an item to pick up:")).lower()
@@ -122,25 +118,25 @@ def pickup_item(input_item):
         print("That value isn't recognised!")
 
 
-
 def drop_item(input_item):
     global current_room
     global user
     try:
-
         if input_item == "c":
             return None
         elif input_item in user.inventory:
-            if user.inventory_tracker[input_item] == "y":
-                user.inventory_tracker[input_item] == "n"
                 current_room.items.append(input_item)
                 user.inventory.remove(input_item)
                 print("You have dropped " + input_item)
         else:
-            print("You do not have that item to drop!")
-            input_item = str(input("Please enter an item to drop:")).lower()
+            print("You cannot drop that item!")
+            item_input = str(input("Please enter an item to drop:")).lower()
+            input_item = item_input.split(" ")
+            drop_item(input_item[0])
     except ValueError:
         print("That is not a recognised value!")
+
+    print(user.inventory)
 
 def inventory():
     global user
