@@ -15,12 +15,10 @@ checking if the input value is valid area to move to,
 then updates the player co ordinates to represent the movement.
 The function then calls update_room to update the current_room instance
 """
-def move():
+def move(direction):
     # Takes in user to update their position, and room to check where you can move to
     global current_room
     try:
-        direction = str(input("Please enter a direction to move"))
-        direction = direction.lower()
         if direction == "c":
             return "placeholder text"
         elif direction in current_room.directions:
@@ -35,7 +33,9 @@ def move():
         # This else is in case the user puts in a value that isn't possible to be moved to
         else:
             print("You cannot move there!\n")
-            move()
+            direction_input  = str(input("Please enter a direction to move from this list:" + str(current_room.directions)))
+            usage = direction_input[0]
+            move(usage)
     except ValueError:
             print("That value isn't recognised sorry\n")
 
@@ -79,7 +79,7 @@ def update_room():
 def item():
     global user
     try:
-        input_item = input("Please enter what item you would like to use")
+        input_item = input("Please enter what item you would like to use:")
         if input_item == "map":
             print(user.map())
     except ValueError:
@@ -94,7 +94,7 @@ def puzzle():
 def pickup():
     global current_room
     global user
-    input_item = str(input("please enter an item to pick up")).lower()
+    input_item = str(input("please enter an item to pick up:")).lower()
     if input_item == "c":
         return None
     elif input_item in current_room.items:
@@ -113,7 +113,7 @@ def drop():
     global current_room
     global user
     try:
-        input_item = str(input("Please enter an item to drop")).lower()
+        input_item = str(input("Please enter an item to drop:")).lower()
         if input_item == "c":
             return None
         elif input_item in user.inventory:
@@ -147,25 +147,36 @@ It takes a user input in to then work out what the corresponding function is to 
 """
 while choice != "q":
     try:
-        choice = str(input("What action would you like to do?"))
-        #This is just fucking movement
-        if choice == "move":
-            move()
-        elif choice == "inv" or choice == "i" or choice == "inventory":
+        choice = str(input("Please input what action you would like to do:")).lower()
+        choice = choice.split(" ")
+        command = choice[0]
+        # This try except exists to prevent IndexError incase choice.split does not have 2 values
+        try:
+            usage = choice[1]
+        except IndexError:
+            usage = None
+
+
+        if command == "move" or command == "m":
+            move(usage)
+        elif command == "inv" or command == "i" or command == "inventory":
             inventory()
-        elif choice == "room items" or choice == "r i":
-            room_items()
-        elif choice == "puzzle":
+        elif command == "room items" or command == "r i":
+            room_items(usage)
+        elif command == "puzzle":
             puzzle()
-        elif choice == "drop" or choice == "d":
-            drop()
-        elif choice == "pickup" or choice == "p" or choice == "pickup item":
-            pickup()
-        elif choice == "--help":
+        elif command == "drop" or command == "d":
+            drop(usage)
+        elif command == "pickup" or command == "p" or command == "pickup item":
+            pickup(usage)
+        elif command == "--help":
             help()
-        elif choice == "q":
+        elif command == "q":
             print("Bye Bye World")
+            choice = "q"
         else:
             print("That isn't a valid command, enter --help to see available commands\n")
     except ValueError:
         print("That isn't a valid command, enter --help to see available commands\n")
+
+#TODO make statements check if input in command
