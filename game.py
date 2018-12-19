@@ -138,7 +138,9 @@ def room_items():
 """Help function that prints out all available commands"""
 #TODO try and make this command be responsive as some commands canno always be executed
 def help():
-    print("This is a list of available commands:\n")
+    file = open("help.txt", "r")
+    print(file.read())
+    file.close()
 
 
 """

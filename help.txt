@@ -1,0 +1,4 @@
+placeholder text
+palceholder text line 2
+placeholder text line 3
+this file will hold all the commands that can be done in my text adventure game
