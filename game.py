@@ -77,12 +77,19 @@ def update_room():
     print("You have moved to " + current_room.room_name() + "\n")
 
 
-def item():
+def use_item(input_item):
     global user
     try:
-        input_item = input("Please enter what item you would like to use:")
-        if input_item == "map":
-            print(user.map())
+        if input_item == "c":
+            return None
+        elif input_item in user.inventory:
+            if input_item == "map":
+                print(user.map())
+        else:
+            print("You do not have that item!")
+            item_input = str(input("Please enter an item to use:")).lower()
+            input_item = item_input.split()
+            use_item(input_item[0])
     except ValueError:
         print("That isn't a proper value")
 
@@ -92,7 +99,7 @@ def puzzle():
     current_room.puzzle()
 
 
-def pickup():
+def pickup_item():
     global current_room
     global user
     input_item = str(input("please enter an item to pick up:")).lower()
@@ -110,11 +117,11 @@ def pickup():
         print("You cannot pick up that item!")
 
 
-def drop(input_item):
+def drop_item(input_item):
     global current_room
     global user
     try:
-        input_item = str(input("Please enter an item to drop:")).lower()
+
         if input_item == "c":
             return None
         elif input_item in user.inventory:
@@ -125,6 +132,7 @@ def drop(input_item):
                 print("You have dropped " + input_item)
         else:
             print("You do not have that item to drop!")
+            input_item = str(input("Please enter an item to drop:")).lower()
     except ValueError:
         print("That is not a recognised value!")
 
@@ -169,9 +177,11 @@ while choice != "q":
         elif command == "puzzle":
             puzzle()
         elif command == "drop" or command == "d":
-            drop(usage)
+            drop_item(usage)
         elif command == "pickup" or command == "p" or command == "pickup item":
-            pickup(usage)
+            pickup_item(usage)
+        elif command == "use" or command == "u":
+            use_item(usage)
         elif command == "--help":
             help()
         elif command == "q":

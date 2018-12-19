@@ -14,12 +14,9 @@ class Player(object):
     """
     #TODO if the user inputs an item that isn't in their inventory let them know
     #This whole function is a TODO
-    
+
     """
     This function returns the user x y position
     """
-
-
-
     def map(self):
         return(self.x, self.y)
