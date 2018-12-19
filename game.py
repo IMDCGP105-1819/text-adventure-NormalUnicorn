@@ -31,6 +31,7 @@ def move(direction):
             elif direction == "west" or direction == "w":
                 user.x += -1
         # This else is in case the user puts in a value that isn't possible to be moved to
+            update_room()
         else:
             print("You cannot move there!\n")
             direction_input  = str(input("Please enter a direction to move from this list:" + str(current_room.directions)))
@@ -39,7 +40,7 @@ def move(direction):
     except ValueError:
             print("That value isn't recognised sorry\n")
 
-    update_room()
+
 
 """
 The update_room function is called after the player has moved in the move function
@@ -109,7 +110,7 @@ def pickup():
         print("You cannot pick up that item!")
 
 
-def drop():
+def drop(input_item):
     global current_room
     global user
     try:
@@ -163,8 +164,8 @@ while choice != "q":
             move(usage)
         elif command == "inv" or command == "i" or command == "inventory":
             inventory()
-        elif command == "room items" or command == "r i":
-            room_items(usage)
+        elif command == "items":
+            room_items()
         elif command == "puzzle":
             puzzle()
         elif command == "drop" or command == "d":
@@ -181,4 +182,4 @@ while choice != "q":
     except ValueError:
         print("That isn't a valid command, enter --help to see available commands\n")
 
-#TODO make statements check if input in command
+#TODO need a way to cancel any function you enter that needs inputs
