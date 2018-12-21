@@ -94,6 +94,67 @@ def use_item(input_item):
         print("That isn't a proper value")
 
 
+
+"""
+Pickup item works by looking at a file with all the items in each room
+It then finds out which line is the room the player is currently in
+When the user picks up the item it then rewrites the line to remove the picked up item
+and writes the line back to the file
+"""
+def pickup_item(input_item):
+    global current_room
+    global user
+    line_value = current_room.room_name()
+
+    with open('inventory.txt', 'r') as file:
+        data = file.readlines()
+
+    current_inventory = str(data[line_value-1])
+    if input_item in current_inventory:
+        new_inventory = current_inventory.replace(input_item, "")
+        data[line_value-1] = new_inventory
+        user.inventory.append(input_item)
+        print(user.inventory)
+
+        with open('inventory.txt', 'w') as file:
+            file.writelines(data)
+
+        file.close()
+    elif input_item == "c":
+        return None
+    else:
+        print("That item isn't in this room sorry!")
+        item = input("Please input an item to pick up: ")
+        pickup_item(item)
+
+"""
+drop_item works by seeing if the item is in the player inventory
+If that is true, then it reads a file with all items in rooms
+it then adds the dropped item to the line that represents the current room
+and removes the item from the user inventory 
+"""
+def drop_item(input_item):
+    global current_room
+    global user
+    line_value = current_room.room_name()-1
+    if input_item in user.inventory:
+        with open('inventory.txt', 'r') as file:
+            inventory = file.readlines()
+
+        current_inventory = str(inventory[line_value])
+        new_inventory = input_item + ", " + current_inventory
+        inventory[line_value] = new_inventory
+        user.inventory.remove(input_item)
+        with open('inventory.txt', 'w') as file:
+            file.writelines(inventory)
+
+        print(user.inventory)
+    elif input_item == "c":
+        return None
+    else:
+        print("You do not have that item to drop!")
+        item = input("Please input an item to drop: ")
+        drop_item(item)
 def puzzle():
     global current_room
     current_room.puzzle()
