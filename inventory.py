@@ -26,35 +26,33 @@ def pickup_item(input_item):
         return None
     else:
         print("That item isn't in this room sorry!")
-        item = input("Please input an item to pick up")
+        item = input("Please input an item to pick up: ")
         pickup_item(item)
-pickup_item("car")
-
-
-
-
-
-
 
 
 
 def drop_item(input_item):
     global current_room
     global user
-    try:
-        if input_item == "c":
-            return None
-        elif input_item in user.inventory == True:
-                current_room.items.append(input_item)
-                user.inventory.remove(input_item)
-                print("You have dropped " + input_item)
+    line_value = current_room.room_name()-1
+    if input_item in user.inventory:
+        with open('inventory.txt', 'r') as file:
+            inventory = file.readlines()
 
-        else:
-            print("You cannot drop that item!")
-            item_input = str(input("Please enter an item to drop:")).lower()
-            input_item = item_input.split(" ")
-            drop_item(input_item[0])
-    except ValueError:
-        print("That is not a recognised value!")
+        current_inventory = str(inventory[line_value])
+        new_inventory = input_item + ", " + current_inventory
+        inventory[line_value] = new_inventory
+        user.inventory.remove(input_item)
+        with open('inventory.txt', 'w') as file:
+            file.writelines(inventory)
 
-    print(user.inventory)
+        print(user.inventory)
+    elif input_item == "c":
+        return None
+    else:
+        print("You do not have that item to drop!")
+        item = input("Please input an item to drop: ")
+        drop_item(item)
+
+
+drop_item("car")

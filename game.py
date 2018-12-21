@@ -3,20 +3,17 @@ import player
 
 # Create an instance of the room class that the player is in
 current_room = rooms.room5()
-
 user = player.Player()
-
 choice = ""
 
 
-"""
-The function move works by taking a user input in,
-checking if the input value is valid area to move to,
-then updates the player co ordinates to represent the movement.
-The function then calls update_room to update the current_room instance
-"""
 def move(direction):
-    # Takes in user to update their position, and room to check where you can move to
+    """
+    The function move works by taking a user input in,
+    checking if the input value is valid area to move to,
+    then updates the player co ordinates to represent the movement.
+    The function then calls update_room to update the current_room instance
+    """
     global current_room
     try:
         if direction == "c":
@@ -41,13 +38,12 @@ def move(direction):
             print("That value isn't recognised!\n")
 
 
-
-"""
-The update_room function is called after the player has moved in the move function
-update_room goes through all possible 9 co ordinate locations to check if the co ords are the same as the player position
-if room co ords and player co ords are the same, the current_room variable instance is updated to reflect the new room the player is in
-"""
 def update_room():
+    """
+    The update_room function is called after the player has moved in the move function
+    update_room goes through all possible 9 co ordinate locations to check if the co ords are the same as the player position
+    if room co ords and player co ords are the same, the current_room variable instance is updated to reflect the new room the player is in
+    """
     global current_room
 
     if user.x == 1:
@@ -94,14 +90,13 @@ def use_item(input_item):
         print("That isn't a proper value")
 
 
-
-"""
-Pickup item works by looking at a file with all the items in each room
-It then finds out which line is the room the player is currently in
-When the user picks up the item it then rewrites the line to remove the picked up item
-and writes the line back to the file
-"""
 def pickup_item(input_item):
+    """
+    Pickup item works by looking at a file with all the items in each room
+    It then finds out which line is the room the player is currently in
+    When the user picks up the item it then rewrites the line to remove the picked up item
+    and writes the line back to the file
+    """
     global current_room
     global user
     line_value = current_room.room_name()
@@ -127,13 +122,14 @@ def pickup_item(input_item):
         item = input("Please input an item to pick up: ")
         pickup_item(item)
 
-"""
-drop_item works by seeing if the item is in the player inventory
-If that is true, then it reads a file with all items in rooms
-it then adds the dropped item to the line that represents the current room
-and removes the item from the user inventory 
-"""
+
 def drop_item(input_item):
+    """
+    drop_item works by seeing if the item is in the player inventory
+    If that is true, then it reads a file with all items in rooms
+    it then adds the dropped item to the line that represents the current room
+    and removes the item from the user inventory
+    """
     global current_room
     global user
     line_value = current_room.room_name()-1
@@ -160,29 +156,28 @@ def puzzle():
     current_room.puzzle()
 
 
-
-
 def inventory():
     global user
     print(user.inventory)
+
 
 def room_items():
     global current_room
     print(current_room.items)
 
-"""Help function that prints out all available commands"""
-#TODO try and make this command be responsive as some commands canno always be executed
+
 def help():
+    """Help function that prints out all available commands"""
     file = open("help.txt", "r")
     print(file.read())
     file.close()
 
 
-"""
-This while loop is the game running
-It takes a user input in to then work out what the corresponding function is to execute the task the user input
-"""
 while choice != "q":
+    """
+    This while loop is the game running
+    It takes a user input in to then work out what the corresponding function is to execute the task the user input
+    """
     try:
         choice = str(input("Please input what action you would like to do:")).lower()
         choice = choice.split(" ")
@@ -192,7 +187,6 @@ while choice != "q":
             usage = choice[1]
         except IndexError:
             usage = None
-
 
         if command == "move" or command == "m":
             move(usage)
@@ -217,5 +211,3 @@ while choice != "q":
             print("That isn't a valid command, enter --help to see available commands\n")
     except ValueError:
         print("That isn't a valid command, enter --help to see available commands\n")
-
-#TODO need a way to cancel any function you enter that needs inputs
