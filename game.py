@@ -99,44 +99,7 @@ def puzzle():
     current_room.puzzle()
 
 
-def pickup_item(input_item):
-    global current_room
-    global user
-    try:
-        if input_item == "c":
-            return None
-        elif input_item in current_room.items:
-                    user.inventory.append(input_item)
-                    current_room.items.remove(input_item)
-                    print("You picked up " + input_item)
-        else:
-            print("You cannot pick up that item!")
-            item_input = str(input("Please enter an item to pick up:")).lower()
-            input_item = item_input.split(" ")
-            pickup_item(input_item[0])
-    except ValueError:
-        print("That value isn't recognised!")
 
-
-def drop_item(input_item):
-    global current_room
-    global user
-    try:
-        if input_item == "c":
-            return None
-        elif input_item in user.inventory:
-                current_room.items.append(input_item)
-                user.inventory.remove(input_item)
-                print("You have dropped " + input_item)
-        else:
-            print("You cannot drop that item!")
-            item_input = str(input("Please enter an item to drop:")).lower()
-            input_item = item_input.split(" ")
-            drop_item(input_item[0])
-    except ValueError:
-        print("That is not a recognised value!")
-
-    print(user.inventory)
 
 def inventory():
     global user

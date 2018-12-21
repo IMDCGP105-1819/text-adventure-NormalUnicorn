@@ -7,12 +7,19 @@ def pickup_item(input_item):
     global current_room
     global user
     line_value = current_room.room_name()
-    current_inventory = []
     with open('inventory.txt', 'r') as file:
         data = file.readlines()
-    print(data)
+
+    current_inventory = str(data[line_value-1])
+
+    print(current_inventory)
+    new_inventory = current_inventory.replace("map", "")
+    print(new_inventory)
     data[1] = "text\n"
     print(data)
+
+    data[line_value-1] = new_inventory
+
     with open('inventory.txt', 'w') as file:
         file.writelines(data)
 
