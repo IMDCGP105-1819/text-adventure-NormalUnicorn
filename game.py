@@ -3,8 +3,11 @@ import player
 
 # Create an instance of the room class that the player is in
 current_room = rooms.room5()
+#instance of the player
 user = player.Player()
+#used to start the game
 choice = ""
+#used to track all the rooms the player has solved
 solved_dict = {"1":"y", "2":"y", "3":"y", "4":"n", "5":"y", "6":"n", "7":"y", "8":"y", "9":"y"}
 
 def move(direction):
@@ -74,6 +77,12 @@ def update_room():
     print("You have moved to room " + str(current_room.room_name()) + "\n")
 
 def total_solved():
+    """
+    This function works by looking at the solved_dict list to see if all the values are "y"
+    if this is true it means that all the rooms have been solved
+    as such it adds the key item to the user inventory
+    it returns true or false to determine if the key item can be used or not
+    """
     global user
     solved = all(value == "y" for value in solved_dict.values())
     if solved == True:
@@ -85,6 +94,12 @@ def total_solved():
 
 
 def solved(user_solution, room_solution):
+    """
+    This function takes in the user solution, and the solution that is intended
+    it then sees if the intended solution is in the user soloution(to allow for some variation in solution such as a splinter v splinter)
+    it then updates the solved_dict value to say the room has been solved
+    then it checks if every room has been solved
+    """
     global current_room
     if room_solution in user_solution:
         print("You have solved room " + str(current_room.room_name()))
@@ -97,11 +112,15 @@ def solved(user_solution, room_solution):
     total_solved()
 
 def use_item(input_item):
+    """
+    This function works by taking in input_item and comparing it against if statements
+    """
     global user
     global current_room
     try:
         if input_item == "c":
             return None
+
         elif input_item == "laptop" and current_room.room_name() == 4:
             user_solution = str(input("Please enter what you think IT is:"))
             solved(user_solution, current_room.solution)
@@ -112,7 +131,8 @@ def use_item(input_item):
 
         elif input_item == "key" and current_room.room_name() == 6 and total_solved() == True:
             print("You place the key into the key hole and open up a door\n you walk through the door\n enscribed on the walls is the text \"The intent behind this game was to provide the player with a sense of pride and accomplishment\"")
-        elif input_item == "map":
+
+        elif input_item == "map" and "map" in user.inventory:
                 print(user.map())
 
         elif input_item == "barrel" and current_room.room_name() == 6:
@@ -130,6 +150,11 @@ def use_item(input_item):
 
 
 def room_inventory():
+    """
+    This function updates the current_room inventory by opening the inventory file
+    it then looks at the specific line for the current room
+    and updates the current room inventory variable to the line in the file
+    """
     #This function means that the room inventory
     with open('inventory.txt', 'r') as file:
         data = file.readlines()
@@ -210,16 +235,26 @@ def drop_item(input_item):
 
 
 def puzzle():
+    """
+    This function prints out the puzzle in the current room
+    """
     global current_room
     print(current_room.room_puzzle())
 
 
 def inventory():
+    """
+    This function prints out the player inventory
+    """
     global user
     print(user.inventory)
 
 
 def look_room_items():
+    """
+    this function opens the invetory file to find out which items are in the current room
+    it then prints out what items are in the current room
+    """
     global current_room
     with open('inventory.txt', 'r') as file:
         inventory = file.readlines()
@@ -250,9 +285,12 @@ with open('inventory.txt', 'w') as file:
     file.write("plane\n")
     file.write("mouse\n")
 
-
+#Update the room inventory as soon as the game starts
 room_inventory()
+
+#acts as the start of the game
 print(current_room.look())
+
 while choice != "q":
     """
     This while loop is the game running
