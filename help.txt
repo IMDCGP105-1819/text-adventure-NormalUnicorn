@@ -1,4 +1,8 @@
-placeholder text
-palceholder text line 2
-placeholder text line 3
-this file will hold all the commands that can be done in my text adventure game
+--help: lists all available commands
+move <direction>: moves the player from room to room
+pickup <item>: places an item in the user inventory
+drop <item>: removes an item from the user inventory and places it in the current room
+use <item>: uses an item in the player inventory
+inventory: displays all the items in the player inventory
+items: displays all the items in the current room
+puzzle: displays the puzzle in the current room
