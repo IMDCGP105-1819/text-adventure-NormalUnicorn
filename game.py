@@ -5,7 +5,7 @@ import player
 current_room = rooms.room5()
 user = player.Player()
 choice = ""
-solved_dict = {"1":"n", "2":"n", "3":"n", "4":"n", "5":"n", "6":"n", "7":"n", "8":"n", "9":"n"}
+solved_dict = {"1":"y", "2":"y", "3":"y", "4":"n", "5":"y", "6":"n", "7":"y", "8":"y", "9":"y"}
 
 def move(direction):
     """
@@ -73,6 +73,17 @@ def update_room():
     room_inventory()
     print("You have moved to room " + str(current_room.room_name()) + "\n")
 
+def total_solved():
+    global user
+    solved = all(value == "y" for value in solved_dict.values())
+    if solved == True:
+        print("You solved all the puzzles and are rewarded with a key!")
+        user.inventory.append("key")
+        return True
+    else:
+        return False
+
+
 def solved(user_solution, room_solution):
     global current_room
     if room_solution in user_solution:
@@ -83,6 +94,7 @@ def solved(user_solution, room_solution):
         print("That is not the correct answer sorry!")
 
     print(solved_dict)
+    total_solved()
 
 def use_item(input_item):
     global user
@@ -90,12 +102,23 @@ def use_item(input_item):
     try:
         if input_item == "c":
             return None
-        elif input_item == "laptop":
+        elif input_item == "laptop" and current_room.room_name() == 4:
             user_solution = str(input("Please enter what you think IT is:"))
             solved(user_solution, current_room.solution)
-        elif input_item in user.inventory:
-            if input_item == "map":
+
+        elif input_item == "barrel" and current_room.room_name() == 6:
+            print("You roll the barrels off to the side of the room to revel a keyhole!")
+            solved("barrel", "barrel")
+
+        elif input_item == "key" and current_room.room_name() == 6 and total_solved() == True:
+            print("You place the key into the key hole and open up a door\n you walk through the door\n enscribed on the walls is the text \"The intent behind this game was to provide the player with a sense of pride and accomplishment\"")
+        elif input_item == "map":
                 print(user.map())
+
+        elif input_item == "barrel" and current_room.room_name() == 6:
+            print("You roll the barrels off to the side of the room to revel a keyhole!")
+            solved("barrel", "barrel")
+
         else:
             print("You do not have that item!")
             item_input = str(input("Please enter an item to use:")).lower()
@@ -222,7 +245,7 @@ with open('inventory.txt', 'w') as file:
     file.write("horse\n")
     file.write("pen\n")
     file.write("map\n")
-    file.write("ink\n")
+    file.write("barrel\n")
     file.write("wool\n")
     file.write("plane\n")
     file.write("mouse\n")
