@@ -70,7 +70,7 @@ def update_room():
         elif user.y == 3:
             current_room = rooms.room3()
 
-    print("You have moved to " + current_room.room_name() + "\n")
+    print("You have moved to " + str(current_room.room_name()) + "\n")
 
 
 def use_item(input_item):
@@ -144,6 +144,7 @@ def drop_item(input_item):
         with open('inventory.txt', 'w') as file:
             file.writelines(inventory)
 
+        file.close()
         print(user.inventory)
     elif input_item == "c":
         return None
@@ -151,6 +152,9 @@ def drop_item(input_item):
         print("You do not have that item to drop!")
         item = input("Please input an item to drop: ")
         drop_item(item)
+
+
+
 def puzzle():
     global current_room
     current_room.puzzle()
@@ -163,7 +167,11 @@ def inventory():
 
 def room_items():
     global current_room
-    print(current_room.items)
+    with open('inventory.txt', 'r') as file:
+        inventory = file.readlines()
+        current_inventory = inventory[(current_room.room_name())-1]
+        print(current_inventory)
+    file.close()
 
 
 def help():
@@ -172,6 +180,19 @@ def help():
     print(file.read())
     file.close()
 
+# First open the file to clear all the text in the file
+open('inventory.txt', 'w').close()
+# Then write all the items in each room to the file line by line
+with open('inventory.txt', 'w') as file:
+    file.write("car\n")
+    file.write("house\n")
+    file.write("horse\n")
+    file.write("pen\n")
+    file.write("map\n")
+    file.write("ink\n")
+    file.write("wool\n")
+    file.write("plane\n")
+    file.write("mouse\n")
 
 while choice != "q":
     """
@@ -185,6 +206,9 @@ while choice != "q":
         # This try except exists to prevent IndexError incase choice.split does not have 2 values
         try:
             usage = choice[1]
+            if usage == "placeholder":
+                print("nice try")
+                command = "help"
         except IndexError:
             usage = None
 
