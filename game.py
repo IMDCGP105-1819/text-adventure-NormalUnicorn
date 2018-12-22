@@ -5,7 +5,7 @@ import player
 current_room = rooms.room5()
 user = player.Player()
 choice = ""
-
+solved_dict = {"1":"n", "2":"n", "3":"n", "4":"n", "5":"n", "6":"n", "7":"n", "8":"n", "9":"n"}
 
 def move(direction):
     """
@@ -73,12 +73,26 @@ def update_room():
     room_inventory()
     print("You have moved to room " + str(current_room.room_name()) + "\n")
 
+def solved(user_solution, room_solution):
+    global current_room
+    if room_solution in user_solution:
+        print("You have solved room " + str(current_room.room_name()))
+        solved_dict.pop(str(current_room.room_name()), None)
+        solved_dict[str(current_room.room_name())] = "y"
+    else:
+        print("That is not the correct answer sorry!")
+
+    print(solved_dict)
 
 def use_item(input_item):
     global user
+    global current_room
     try:
         if input_item == "c":
             return None
+        elif input_item == "laptop":
+            user_solution = str(input("Please enter what you think IT is:"))
+            solved(user_solution, current_room.solution)
         elif input_item in user.inventory:
             if input_item == "map":
                 print(user.map())
@@ -174,7 +188,7 @@ def drop_item(input_item):
 
 def puzzle():
     global current_room
-    current_room.puzzle()
+    print(current_room.room_puzzle())
 
 
 def inventory():
