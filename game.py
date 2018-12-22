@@ -70,7 +70,8 @@ def update_room():
         elif user.y == 3:
             current_room = rooms.room3()
 
-    print("You have moved to " + str(current_room.room_name()) + "\n")
+    room_inventory()
+    print("You have moved to room " + str(current_room.room_name()) + "\n")
 
 
 def use_item(input_item):
@@ -90,6 +91,16 @@ def use_item(input_item):
         print("That isn't a proper value")
 
 
+
+def room_inventory():
+    #This function means that the room inventory
+    with open('inventory.txt', 'r') as file:
+        data = file.readlines()
+
+    current_room.inventory = data[current_room.room_name()-1]
+    file.close()
+
+
 def pickup_item(input_item):
     """
     Pickup item works by looking at a file with all the items in each room
@@ -105,16 +116,18 @@ def pickup_item(input_item):
         data = file.readlines()
 
     current_inventory = str(data[line_value-1])
+
     if input_item in current_inventory:
         new_inventory = current_inventory.replace(input_item, "")
         data[line_value-1] = new_inventory
         user.inventory.append(input_item)
-        print(user.inventory)
 
         with open('inventory.txt', 'w') as file:
             file.writelines(data)
 
         file.close()
+        room_inventory()
+
     elif input_item == "c":
         return None
     else:
@@ -133,7 +146,9 @@ def drop_item(input_item):
     global current_room
     global user
     line_value = current_room.room_name()-1
+
     if input_item in user.inventory:
+
         with open('inventory.txt', 'r') as file:
             inventory = file.readlines()
 
@@ -141,11 +156,13 @@ def drop_item(input_item):
         new_inventory = input_item + ", " + current_inventory
         inventory[line_value] = new_inventory
         user.inventory.remove(input_item)
+
         with open('inventory.txt', 'w') as file:
             file.writelines(inventory)
 
         file.close()
-        print(user.inventory)
+        room_inventory()
+
     elif input_item == "c":
         return None
     else:
@@ -165,7 +182,7 @@ def inventory():
     print(user.inventory)
 
 
-def room_items():
+def look_room_items():
     global current_room
     with open('inventory.txt', 'r') as file:
         inventory = file.readlines()
@@ -179,6 +196,8 @@ def help():
     file = open("help.txt", "r")
     print(file.read())
     file.close()
+
+
 
 # First open the file to clear all the text in the file
 open('inventory.txt', 'w').close()
@@ -194,6 +213,9 @@ with open('inventory.txt', 'w') as file:
     file.write("plane\n")
     file.write("mouse\n")
 
+
+room_inventory()
+print(current_room.look())
 while choice != "q":
     """
     This while loop is the game running
@@ -216,8 +238,8 @@ while choice != "q":
             move(usage)
         elif command == "inv" or command == "i" or command == "inventory":
             inventory()
-        elif command == "items":
-            room_items()
+        elif command == "room" and usage == "items":
+            look_room_items()
         elif command == "puzzle":
             puzzle()
         elif command == "drop" or command == "d":
