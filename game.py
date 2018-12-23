@@ -108,7 +108,6 @@ def solved(user_solution, room_solution):
     else:
         print("That is not the correct answer sorry!")
 
-    print(solved_dict)
     total_solved()
 
 def use_item(input_item):
@@ -117,35 +116,15 @@ def use_item(input_item):
     """
     global user
     global current_room
-    try:
-        if input_item == "c":
-            return None
-
-        elif input_item == "laptop" and current_room.room_name() == 4:
-            user_solution = str(input("Please enter what you think IT is:"))
-            solved(user_solution, current_room.solution)
-
-        elif input_item == "barrel" and current_room.room_name() == 6:
-            print("You roll the barrels off to the side of the room to revel a keyhole!")
-            solved("barrel", "barrel")
-
-        elif input_item == "key" and current_room.room_name() == 6 and total_solved() == True:
-            print("You place the key into the key hole and open up a door\n you walk through the door\n enscribed on the walls is the text \"The intent behind this game was to provide the player with a sense of pride and accomplishment\"")
-
-        elif input_item == "map" and "map" in user.inventory:
-                print(user.map())
-
-        elif input_item == "barrel" and current_room.room_name() == 6:
-            print("You roll the barrels off to the side of the room to revel a keyhole!")
-            solved("barrel", "barrel")
-
-        else:
-            print("You do not have that item!")
-            item_input = str(input("Please enter an item to use:")).lower()
-            input_item = item_input.split(" ")
-            use_item(input_item[0])
-    except ValueError:
-        print("That isn't a proper value")
+    if input_item == "c":
+        return None
+    elif current_room.correct_item(input_item):
+        solved(current_room.use_item(input_item), current_room.solution)
+    else:
+        print("That item has no use in this room.")
+        item_input = str(input("Please enter an item to use:")).lower()
+        input_item = item_input.split(" ")
+        use_item(input_item[0])
 
 
 
