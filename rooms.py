@@ -3,13 +3,15 @@ class room1(object):
     #Variables for the room, this will include the directions that can be traveled
     def __init__(self):
         self.inventory = []
+
         self.directions = ["east", "e", "south", "s"]
+
         self.x = 1
         self.y = 3
-        self.visited = 0
+        self.room_name = 1
 
-    def room_name(self):
-        return 1
+        self.solution = "placeholder"
+        self.item = "placeholder"
 
     def look(self):
         return ""
@@ -28,49 +30,61 @@ class room1(object):
         except ValueError:
             print("Please put in a correct value")
 
-class room2():
+
+    def correct_item(self, user_item):
+        if self.item in user_item:
+            return True
+        else:
+            return False
+
+
+class room2(room1):
     def __init__(self):
         self.inventory = []
+
         self.directions = ["east", "e", "south", "s", "west", "w"]
+
         self.x = 2
         self.y = 3
-        self.visited = 0
+        self.room_name = 2
 
-    def room_name(self):
-        return 2
+        self.item = "placeholder"
+        self.solution = "placeholder"
 
     def look(self):
         return "You look around the room and this function message will change depening on the room"
 
 
-class room3():
+class room3(room1):
     def __init__(self):
         self.inventory = []
+
         self.directions = ["west", "w", "south", "s"]
+
         self.x = 3
         self.y = 3
-        self.visited = 0
+        self.room_name = 3
 
-    def room_name(self):
-        return 3
+        self.solution = "placeholder"
+        self.item = "placeholder"
 
     def look(self):
         return "You look around the room and this function message will change depening on the room"
 
 
 # MIDDLE ROW OF ROOMS
-class room4():
+class room4(room1):
     def __init__(self):
         self.inventory = []
-        self.solution = "splinter"
+
         self.directions = ["east", "e", "north", "n", "south", "s"]
+
         self.x = 1
         self.y = 2
-        self.visited = 0
-        self.item = "keyboard"
+        self.room_name = 4
 
-    def room_name(self):
-        return 4
+        self.solution = "splinter"
+        self.item = "keyboard"
 
     def look(self):
         return "Sitting on a table in this room is a laptop with a message on the screen."
@@ -84,42 +98,42 @@ class room4():
         return '{:^50}'.format("What was IT?\n")
 
 
-    def correct_item(self, user_item):
-        if self.item in user_item:
-            return True
-        else:
-            return False
 
     def use_item(self, user_item):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
 
 
-class room5():
+class room5(room1):
     def __init__(self):
         self.inventory = []
+
         self.directions = ["east", "e", "north", "n", "south", "s", "west", "w"]
+
         self.x = 2
         self.y = 2
-        self.visited = 0
+        self.room_name = 5
 
-    def room_name(self):
-        return 5
+        self.solution = "placeholder"
+        self.item = "placeholder"
 
     def look(self):
         return "In this room is a table with a map on it. The rest of the room is barren"
 
 
-class room6():
+class room6(room1):
     def __init__(self):
         self.inventory = []
+
         self.directions = ["west", "w", "north", "n", "south", "s"]
+
         self.x = 3
         self.y = 2
-        self.visited = 0
+        self.room_name = 6
 
-    def room_name(self):
-        return 6
+        self.solution = "placeholder"
+        self.item = "placeholder"
+
 
     def puzzle(self):
         return "This room is filled to the brim with barrels"
@@ -130,46 +144,50 @@ class room6():
 
 
 # BOTTOM ROW OF ROOMS
-class room7():
+class room7(room1):
     def __init__(self):
         self.inventory = []
+
         self.directions = ["east", "e", "north", "n"]
+
         self.x = 1
         self.y = 1
-        self.visited = 0
+        self.room_name = 7
 
-    def room_name(self):
-        return 7
+        self.solution = "placeholder"
+        self.item = "placeholder"
 
     def look(self):
         return "You look around the room and this function message will change depening on the room"
 
 
-class room8():
+class room8(room1):
     def __init__(self):
         self.inventory = []
         self.directions = ["east", "e", "north", "n", "west", "w"]
         self.x = 2
         self.y = 1
-        self.visited = 0
+        self.room_name = 8
 
-    def room_name(self):
-        return 8
+        self.solution = "placeholder"
+        self.item = "placeholder"
 
     def look(self):
         return "You look around the room and this function message will change depening on the room"
 
 
-class room9():
+class room9(room1):
     def __init__(self):
         self.inventory = []
+
         self.directions = ["west", "w", "north", "n"]
+
         self.x = 3
         self.y = 1
-        self.visited = 0
+        self.room_name = 9
 
-    def room_name(self):
-        return 9
+        self.solution = "placeholder"
+        self.item = "placeholder"
 
     def look(self):
         return "You look around the room and this function message will change depening on the room"
