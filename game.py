@@ -8,7 +8,6 @@ user = player.Player()
 #used to start the game
 choice = ""
 #used to track all the rooms the player has solved
-solved_dict = {"1":"y", "2":"y", "3":"y", "4":"n", "5":"y", "6":"n", "7":"y", "8":"y", "9":"y"}
 
 def move(direction):
     """
@@ -74,7 +73,7 @@ def update_room():
             current_room = rooms.room3()
 
     room_inventory()
-    print("You have moved to room " + str(current_room.room_name()) + "\n")
+    print("You have moved to room " + str(current_room.room_name) + "\n")
 
 def total_solved():
     """
@@ -84,7 +83,7 @@ def total_solved():
     it returns true or false to determine if the key item can be used or not
     """
     global user
-    solved = all(value == "y" for value in solved_dict.values())
+    solved = all(value == "y" for value in user.solved_dict.values())
     if solved == True:
         print("You solved all the puzzles and are rewarded with a key!")
         user.inventory.append("key")
@@ -100,11 +99,12 @@ def solved(user_solution, room_solution):
     it then updates the solved_dict value to say the room has been solved
     then it checks if every room has been solved
     """
+    global user
     global current_room
     if room_solution in user_solution:
-        print("You have solved room " + str(current_room.room_name()))
-        solved_dict.pop(str(current_room.room_name()), None)
-        solved_dict[str(current_room.room_name())] = "y"
+        print("You have solved room " + str(current_room.room_name))
+        user.solved_dict.pop(str(current_room.room_name), None)
+        user.solved_dict[str(current_room.room_name)] = "y"
     else:
         print("That is not the correct answer sorry!")
 
@@ -120,6 +120,11 @@ def use_item(input_item):
         return None
     elif current_room.correct_item(input_item):
         solved(current_room.use_item(input_item), current_room.solution)
+    elif input_item in user.inventory:
+        if input_item == "map":
+            print(user.map())
+        elif input_item == "notebook":
+            print(user.notebook())
     else:
         print("That item has no use in this room.")
         item_input = str(input("Please enter an item to use:")).lower()
@@ -138,7 +143,7 @@ def room_inventory():
     with open('inventory.txt', 'r') as file:
         data = file.readlines()
 
-    current_room.inventory = data[current_room.room_name()-1]
+    current_room.inventory = data[current_room.room_name-1]
     file.close()
 
 
@@ -151,7 +156,7 @@ def pickup_item(input_item):
     """
     global current_room
     global user
-    line_value = current_room.room_name()
+    line_value = current_room.room_name
 
     with open('inventory.txt', 'r') as file:
         data = file.readlines()
@@ -186,7 +191,7 @@ def drop_item(input_item):
     """
     global current_room
     global user
-    line_value = current_room.room_name()-1
+    line_value = current_room.room_name-1
 
     if input_item in user.inventory:
 
@@ -237,7 +242,7 @@ def look_room_items():
     global current_room
     with open('inventory.txt', 'r') as file:
         inventory = file.readlines()
-        current_inventory = inventory[(current_room.room_name())-1]
+        current_inventory = inventory[(current_room.room_name)-1]
         print(current_inventory)
     file.close()
 
@@ -258,7 +263,7 @@ with open('inventory.txt', 'w') as file:
     file.write("house\n")
     file.write("horse\n")
     file.write("pen\n")
-    file.write("map\n")
+    file.write("map, notebook\n")
     file.write("barrel\n")
     file.write("wool\n")
     file.write("plane\n")

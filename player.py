@@ -2,20 +2,13 @@ class Player(object):
     def __init__(self):
         self.x = 2
         self.y = 2
-        self.inventory = ["map"]
+        self.inventory = []
+        self.solved_dict = {"1":"y", "2":"y", "3":"y", "4":"n", "5":"y", "6":"n", "7":"y", "8":"y", "9":"y"}
 
 
-
-    """
-    this function works by taking in the item the user wants to use and their current inventory
-    it checks if they have access to the item or not
-    currently it allows the user access if they don't have access for testing purposes
-    """
-    #TODO if the user inputs an item that isn't in their inventory let them know
-    #This whole function is a TODO
-
-    """
-    This function returns the user x y position
-    """
     def map(self):
+        #This function returns the user x y position
         return(self.x, self.y)
+
+    def notebook(self):
+        return {k for k, v in self.solved_dict.items() if v == "y"}

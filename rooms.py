@@ -18,17 +18,7 @@ class room1(object):
 
 
     def puzzle(self):
-        print("In the room you see a laptop on a table. On the laptop screen is a riddle: \nI went to the woods and I got it \nI couldn't get it \nSo I left it there \nAnd took it home with me. \n What is it?")
-        try:
-            ans = str(input("Please enter an answer")).lower()
-            if ans == "splinter" or ans == "a splinter":
-                print("Congratulations you have now solved this room!")
-            elif ans == "c":
-                return None
-            else:
-                print("That is an incorrect answer!")
-        except ValueError:
-            print("Please put in a correct value")
+        pass
 
 
     def correct_item(self, user_item):
@@ -54,6 +44,8 @@ class room2(room1):
     def look(self):
         return "You look around the room and this function message will change depening on the room"
 
+    def puzzle(self):
+        pass
 
 class room3(room1):
     def __init__(self):
@@ -71,6 +63,9 @@ class room3(room1):
     def look(self):
         return "You look around the room and this function message will change depening on the room"
 
+
+    def puzzle(self):
+        pass
 
 # MIDDLE ROW OF ROOMS
 class room4(room1):
@@ -118,7 +113,11 @@ class room5(room1):
         self.item = "placeholder"
 
     def look(self):
-        return "In this room is a table with a map on it. The rest of the room is barren"
+        return "In this room is a table with a map and notebook on it. The rest of the room is barren"
+
+    def room_puzzle(self):
+        return "There is no puzzle in this room."
+
 
 
 class room6(room1):
@@ -131,8 +130,8 @@ class room6(room1):
         self.y = 2
         self.room_name = 6
 
-        self.solution = "placeholder"
-        self.item = "placeholder"
+        self.solution = "barrel"
+        self.item = "barrel"
 
 
     def puzzle(self):
@@ -141,6 +140,12 @@ class room6(room1):
     def look(self):
         return "This room is filled to the brim with barrels"
 
+    def use_item(self, user_item):
+        if user_item == "barrel"
+            return "barrel"
+        elif user_item == "key":
+            self.solution = "key"
+            return "key"
 
 
 # BOTTOM ROW OF ROOMS
@@ -160,6 +165,8 @@ class room7(room1):
     def look(self):
         return "You look around the room and this function message will change depening on the room"
 
+    def puzzle(self):
+        pass
 
 class room8(room1):
     def __init__(self):
@@ -176,6 +183,9 @@ class room8(room1):
         return "You look around the room and this function message will change depening on the room"
 
 
+    def puzzle(self):
+        pass
+
 class room9(room1):
     def __init__(self):
         self.inventory = []
@@ -191,3 +201,6 @@ class room9(room1):
 
     def look(self):
         return "You look around the room and this function message will change depening on the room"
+
+    def puzzle(self):
+        pass
