@@ -16,7 +16,6 @@ def move(direction):
     then updates the player co ordinates to represent the movement.
     The function then calls update_room to update the current_room instance
     """
-    global current_room
     try:
         if direction == "c":
             return "placeholder text"
@@ -46,8 +45,6 @@ def update_room():
     update_room goes through all possible 9 co ordinate locations to check if the co ords are the same as the player position
     if room co ords and player co ords are the same, the current_room variable instance is updated to reflect the new room the player is in
     """
-    global current_room
-
     if user.x == 1:
         if user.y == 1:
             current_room = rooms.room7()
@@ -82,7 +79,6 @@ def total_solved():
     as such it adds the key item to the user inventory
     it returns true or false to determine if the key item can be used or not
     """
-    global user
     solved = all(value == "y" for value in user.solved_dict.values())
     if solved == True:
         print("You solved all the puzzles and are rewarded with a key!")
@@ -99,8 +95,6 @@ def solved(user_solution, room_solution):
     it then updates the solved_dict value to say the room has been solved
     then it checks if every room has been solved
     """
-    global user
-    global current_room
     if room_solution in user_solution:
         print("You have solved room " + str(current_room.room_name))
         user.solved_dict.pop(str(current_room.room_name), None)
@@ -114,8 +108,6 @@ def use_item(input_item):
     """
     This function works by taking in input_item and comparing it against if statements
     """
-    global user
-    global current_room
     if input_item == "c":
         return None
     elif current_room.correct_item(input_item):
@@ -154,8 +146,6 @@ def pickup_item(input_item):
     When the user picks up the item it then rewrites the line to remove the picked up item
     and writes the line back to the file
     """
-    global current_room
-    global user
     line_value = current_room.room_name
 
     with open('inventory.txt', 'r') as file:
@@ -189,8 +179,6 @@ def drop_item(input_item):
     it then adds the dropped item to the line that represents the current room
     and removes the item from the user inventory
     """
-    global current_room
-    global user
     line_value = current_room.room_name-1
 
     if input_item in user.inventory:
@@ -217,12 +205,10 @@ def drop_item(input_item):
         drop_item(item)
 
 
-
 def puzzle():
     """
     This function prints out the puzzle in the current room
     """
-    global current_room
     print(current_room.room_puzzle())
 
 
@@ -230,7 +216,6 @@ def inventory():
     """
     This function prints out the player inventory
     """
-    global user
     print(user.inventory)
 
 
@@ -239,13 +224,16 @@ def look_room_items():
     this function opens the invetory file to find out which items are in the current room
     it then prints out what items are in the current room
     """
-    global current_room
     with open('inventory.txt', 'r') as file:
         inventory = file.readlines()
         current_inventory = inventory[(current_room.room_name)-1]
         print(current_inventory)
     file.close()
 
+
+def direct():
+    print("List of available exits from this room:")
+    print(", ".join(current_room.directions))
 
 def help():
     """Help function that prints out all available commands"""
@@ -309,6 +297,10 @@ while choice != "q":
             use_item(usage)
         elif command == "--help":
             help()
+        elif command == "look" and usage == "room":
+            current_room.look()
+        elif command == "directions":
+            direct()
         elif command == "q":
             print("Bye Bye World")
             choice = "q"
