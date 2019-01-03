@@ -10,6 +10,8 @@ choice = ""
 #used to track all the rooms the player has solved
 
 def move(direction):
+    global current_room
+    global user
     """
     The function move works by taking a user input in,
     checking if the input value is valid area to move to,
@@ -40,6 +42,8 @@ def move(direction):
 
 
 def update_room():
+    global current_room
+    global user
     """
     The update_room function is called after the player has moved in the move function
     update_room goes through all possible 9 co ordinate locations to check if the co ords are the same as the player position
@@ -73,6 +77,8 @@ def update_room():
     print("You have moved to room " + str(current_room.room_name) + "\n")
 
 def total_solved():
+    global current_room
+    global user
     """
     This function works by looking at the solved_dict list to see if all the values are "y"
     if this is true it means that all the rooms have been solved
@@ -89,6 +95,8 @@ def total_solved():
 
 
 def solved(user_solution, room_solution):
+    global current_room
+    global user
     """
     This function takes in the user solution, and the solution that is intended
     it then sees if the intended solution is in the user soloution(to allow for some variation in solution such as a splinter v splinter)
@@ -105,6 +113,8 @@ def solved(user_solution, room_solution):
     total_solved()
 
 def use_item(input_item):
+    global current_room
+    global user
     """
     This function works by taking in input_item and comparing it against if statements
     """
@@ -126,6 +136,8 @@ def use_item(input_item):
 
 
 def room_inventory():
+    global current_room
+    global user
     """
     This function updates the current_room inventory by opening the inventory file
     it then looks at the specific line for the current room
@@ -140,6 +152,8 @@ def room_inventory():
 
 
 def pickup_item(input_item):
+    global current_room
+    global user
     """
     Pickup item works by looking at a file with all the items in each room
     It then finds out which line is the room the player is currently in
@@ -173,6 +187,8 @@ def pickup_item(input_item):
 
 
 def drop_item(input_item):
+    global current_room
+    global user
     """
     drop_item works by seeing if the item is in the player inventory
     If that is true, then it reads a file with all items in rooms
@@ -206,6 +222,8 @@ def drop_item(input_item):
 
 
 def puzzle():
+    global current_room
+    global user
     """
     This function prints out the puzzle in the current room
     """
@@ -213,6 +231,8 @@ def puzzle():
 
 
 def inventory():
+    global current_room
+    global user
     """
     This function prints out the player inventory
     """
@@ -220,6 +240,8 @@ def inventory():
 
 
 def look_room_items():
+    global current_room
+    global user
     """
     this function opens the invetory file to find out which items are in the current room
     it then prints out what items are in the current room
@@ -232,10 +254,14 @@ def look_room_items():
 
 
 def direct():
+    global current_room
+    global user
     print("List of available exits from this room:")
     print(", ".join(current_room.directions))
 
 def help():
+    global current_room
+    global user
     """Help function that prints out all available commands"""
     file = open("help.txt", "r")
     print(file.read())
