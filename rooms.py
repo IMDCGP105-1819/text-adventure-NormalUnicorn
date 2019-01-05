@@ -17,15 +17,21 @@ class room1(object):
         return ""
 
 
-    def puzzle(self):
-        pass
+    def room_puzzle(self):
+        print("You look at the message on the laptop screen")
+        print('{:^50}'.format("I went to the woods and I got IT"))
+        print('{:^50}'.format("I couldn't get IT"))
+        print('{:^50}'.format("So I left IT there"))
+        print('{:^50}'.format("and took IT home with me."))
+        return '{:^50}'.format("What was IT?\n")
 
 
-    def correct_item(self, user_item):
-        if self.item in user_item:
-            return True
-        else:
-            return False
+
+    def use_item(self, user_item):
+            user_solution = input("Please input what you think IT is: ")
+            return user_solution
+
+
 
 
 class room2(room1):
@@ -44,8 +50,21 @@ class room2(room1):
     def look(self):
         return "You look around the room and this function message will change depening on the room"
 
-    def puzzle(self):
-        pass
+    def room_puzzle(self):
+        print("You look at the message on the laptop screen")
+        print('{:^50}'.format("I went to the woods and I got IT"))
+        print('{:^50}'.format("I couldn't get IT"))
+        print('{:^50}'.format("So I left IT there"))
+        print('{:^50}'.format("and took IT home with me."))
+        return '{:^50}'.format("What was IT?\n")
+
+
+
+    def use_item(self, user_item):
+            user_solution = input("Please input what you think IT is: ")
+            return user_solution
+
+
 
 class room3(room1):
     def __init__(self):
@@ -64,8 +83,21 @@ class room3(room1):
         return "You look around the room and this function message will change depening on the room"
 
 
-    def puzzle(self):
-        pass
+    def room_puzzle(self):
+        print("You look at the message on the laptop screen")
+        print('{:^50}'.format("I went to the woods and I got IT"))
+        print('{:^50}'.format("I couldn't get IT"))
+        print('{:^50}'.format("So I left IT there"))
+        print('{:^50}'.format("and took IT home with me."))
+        return '{:^50}'.format("What was IT?\n")
+
+
+
+    def use_item(self, user_item):
+            user_solution = input("Please input what you think IT is: ")
+            return user_solution
+
+
 
 # MIDDLE ROW OF ROOMS
 class room4(room1):
@@ -125,27 +157,36 @@ class room6(room1):
         self.inventory = []
 
         self.directions = ["west", "w", "north", "n", "south", "s"]
-
+        self.flag = False
         self.x = 3
         self.y = 2
         self.room_name = 6
-
+        self.looked = "This room is filled to the brim with barrels"
         self.solution = "barrel"
         self.item = "barrel"
+        while self.flag == False:
+            while "barrel" in self.inventory:
+                pass
+            self.user_item("barrel", "barrel")
+            self.flag = True
+
 
 
     def puzzle(self):
         return "This room is filled to the brim with barrels"
 
     def look(self):
-        return "This room is filled to the brim with barrels"
+        return self.looked
 
     def use_item(self, user_item):
-        if user_item == "barrel"
+        if user_item == "barrel":
             return "barrel"
         elif user_item == "key":
             self.solution = "key"
             return "key"
+
+
+
 
 
 # BOTTOM ROW OF ROOMS
@@ -163,10 +204,23 @@ class room7(room1):
         self.item = "placeholder"
 
     def look(self):
-        return "You look around the room and this function message will change depening on the room"
+        return "There is nothing but a stone pressure plate in the very middle of this room"
 
-    def puzzle(self):
-        pass
+    def room_puzzle(self):
+        print("You look at the message on the laptop screen")
+        print('{:^50}'.format("I went to the woods and I got IT"))
+        print('{:^50}'.format("I couldn't get IT"))
+        print('{:^50}'.format("So I left IT there"))
+        print('{:^50}'.format("and took IT home with me."))
+        return '{:^50}'.format("What was IT?\n")
+
+
+
+    def use_item(self, user_item):
+            user_solution = input("Please input what you think IT is: ")
+            return user_solution
+
+
 
 class room8(room1):
     def __init__(self):
@@ -183,8 +237,20 @@ class room8(room1):
         return "You look around the room and this function message will change depening on the room"
 
 
-    def puzzle(self):
-        pass
+    def room_puzzle(self):
+        print("You look at the message on the laptop screen")
+        print('{:^50}'.format("I went to the woods and I got IT"))
+        print('{:^50}'.format("I couldn't get IT"))
+        print('{:^50}'.format("So I left IT there"))
+        print('{:^50}'.format("and took IT home with me."))
+        return '{:^50}'.format("What was IT?\n")
+
+
+
+    def use_item(self, user_item):
+            user_solution = input("Please input what you think IT is: ")
+            return user_solution
+
 
 class room9(room1):
     def __init__(self):
@@ -202,5 +268,16 @@ class room9(room1):
     def look(self):
         return "You look around the room and this function message will change depening on the room"
 
-    def puzzle(self):
-        pass
+    def room_puzzle(self):
+        print("You look at the message on the laptop screen")
+        print('{:^50}'.format("I went to the woods and I got IT"))
+        print('{:^50}'.format("I couldn't get IT"))
+        print('{:^50}'.format("So I left IT there"))
+        print('{:^50}'.format("and took IT home with me."))
+        return '{:^50}'.format("What was IT?\n")
+
+
+
+    def use_item(self, user_item):
+            user_solution = input("Please input what you think IT is: ")
+            return user_solution
