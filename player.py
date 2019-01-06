@@ -3,7 +3,7 @@ class Player(object):
         self.x = 2
         self.y = 2
         self.inventory = []
-        self.solved_dict = {"1":"y", "2":"y", "3":"y", "4":"n", "5":"y", "6":"n", "7":"y", "8":"y", "9":"y"}
+        self.solved_dict = {"1":"y", "2":"y", "3":"y", "4":"y", "5":"y", "6":"n", "7":"y", "8":"y", "9":"y"}
 
 
     def map(self):

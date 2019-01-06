@@ -1,9 +1,9 @@
-placeholder, placeholder 2
-text
-placeholder, some other stuff
-barrel, barrel2
-map, test
-pen, pen3
-quill, ink
-placeholder, placeholder4
-placeholder, placeholder5
+
+
+
+
+map, notebook
+barrel
+
+
+

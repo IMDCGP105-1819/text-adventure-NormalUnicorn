@@ -273,15 +273,15 @@ def help():
 open('inventory.txt', 'w').close()
 # Then write all the items in each room to the file line by line
 with open('inventory.txt', 'w') as file:
-    file.write("car\n")
-    file.write("house\n")
-    file.write("horse\n")
-    file.write("pen\n")
+    file.write("\n")
+    file.write("\n")
+    file.write("\n")
+    file.write("\n")
     file.write("map, notebook\n")
     file.write("barrel\n")
-    file.write("wool\n")
-    file.write("plane\n")
-    file.write("mouse\n")
+    file.write("\n")
+    file.write("\n")
+    file.write("\n")
 
 #Update the room inventory as soon as the game starts
 room_inventory()
@@ -324,7 +324,7 @@ while choice != "q":
         elif command == "--help":
             help()
         elif command == "look" and usage == "room":
-            current_room.look()
+            print(current_room.look())
         elif command == "directions":
             direct()
         elif command == "q":

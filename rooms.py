@@ -70,12 +70,6 @@ class room2(room1):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
 
-    def correct_item(self, user_item):
-        if self.item in user_item:
-            return True
-        else:
-            return False
-
 
 class room3(room1):
     def __init__(self):
@@ -107,12 +101,6 @@ class room3(room1):
     def use_item(self, user_item):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
-
-    def correct_item(self, user_item):
-        if self.item in user_item:
-            return True
-        else:
-            return False
 
 
 # MIDDLE ROW OF ROOMS
@@ -146,11 +134,6 @@ class room4(room1):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
 
-    def correct_item(self, user_item):
-        if self.item in user_item:
-            return True
-        else:
-            return False
 
 
 class room5(room1):
@@ -202,15 +185,6 @@ class room6(room1):
             self.solution = "key"
             return "key"
 
-    def correct_item(self, user_item):
-        if self.item in user_item:
-            return True
-        else:
-            return False
-
-
-
-
 
 # BOTTOM ROW OF ROOMS
 class room7(room1):
@@ -243,11 +217,6 @@ class room7(room1):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
 
-    def correct_item(self, user_item):
-        if self.item in user_item:
-            return True
-        else:
-            return False
 
 
 class room8(room1):
@@ -279,12 +248,6 @@ class room8(room1):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
 
-    def correct_item(self, user_item):
-        if self.item in user_item:
-            return True
-        else:
-            return False
-
 
 class room9(room1):
     def __init__(self):
@@ -315,9 +278,3 @@ class room9(room1):
     def use_item(self, user_item):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
-
-    def correct_item(self, user_item):
-        if self.item in user_item:
-            return True
-        else:
-            return False
