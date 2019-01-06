@@ -31,6 +31,12 @@ class room1(object):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
 
+    def correct_item(self, user_item):
+        if self.item in user_item:
+            return True
+        else:
+            return False
+
 
 
 
@@ -64,6 +70,11 @@ class room2(room1):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
 
+    def correct_item(self, user_item):
+        if self.item in user_item:
+            return True
+        else:
+            return False
 
 
 class room3(room1):
@@ -97,6 +108,11 @@ class room3(room1):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
 
+    def correct_item(self, user_item):
+        if self.item in user_item:
+            return True
+        else:
+            return False
 
 
 # MIDDLE ROW OF ROOMS
@@ -130,6 +146,12 @@ class room4(room1):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
 
+    def correct_item(self, user_item):
+        if self.item in user_item:
+            return True
+        else:
+            return False
+
 
 class room5(room1):
     def __init__(self):
@@ -157,18 +179,13 @@ class room6(room1):
         self.inventory = []
 
         self.directions = ["west", "w", "north", "n", "south", "s"]
-        self.flag = False
+
         self.x = 3
         self.y = 2
         self.room_name = 6
-        self.looked = "This room is filled to the brim with barrels"
+
         self.solution = "barrel"
         self.item = "barrel"
-        while self.flag == False:
-            while "barrel" in self.inventory:
-                pass
-            self.user_item("barrel", "barrel")
-            self.flag = True
 
 
 
@@ -184,6 +201,12 @@ class room6(room1):
         elif user_item == "key":
             self.solution = "key"
             return "key"
+
+    def correct_item(self, user_item):
+        if self.item in user_item:
+            return True
+        else:
+            return False
 
 
 
@@ -220,6 +243,11 @@ class room7(room1):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
 
+    def correct_item(self, user_item):
+        if self.item in user_item:
+            return True
+        else:
+            return False
 
 
 class room8(room1):
@@ -251,6 +279,12 @@ class room8(room1):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
 
+    def correct_item(self, user_item):
+        if self.item in user_item:
+            return True
+        else:
+            return False
+
 
 class room9(room1):
     def __init__(self):
@@ -281,3 +315,9 @@ class room9(room1):
     def use_item(self, user_item):
             user_solution = input("Please input what you think IT is: ")
             return user_solution
+
+    def correct_item(self, user_item):
+        if self.item in user_item:
+            return True
+        else:
+            return False
