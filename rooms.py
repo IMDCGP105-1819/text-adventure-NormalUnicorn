@@ -47,15 +47,12 @@ class room2(room1):
         self.room_name = 2
 
         self.item = "placeholder"
-        self.solution = "placeholder"
+        self.solution = "dentist"
 
     def room_puzzle(self):
-        print("You look at the message on the laptop screen")
-        print('{:^50}'.format("I went to the woods and I got IT"))
-        print('{:^50}'.format("I couldn't get IT"))
-        print('{:^50}'.format("So I left IT there"))
-        print('{:^50}'.format("and took IT home with me."))
-        return '{:^50}'.format("What was IT?\n")
+        print("You look at the message on the screen")
+        print("I dig out tiny caves, and store gold and silver in them. I also build bridges of silver and make crowns of gold. Sooner or later everybody needs my help")
+        return '{:^50}'.format("Who am I?\n")
 
 
 class room3(room1):
@@ -75,7 +72,7 @@ class room3(room1):
 
 
     def room_puzzle(self):
-        print("You look at the message on the laptop screen")
+        print("You look at the message on the screen")
         print('{:^50}'.format("I went to the woods and I got IT"))
         print('{:^50}'.format("I couldn't get IT"))
         print('{:^50}'.format("So I left IT there"))
@@ -100,7 +97,7 @@ class room4(room1):
         self.item = "keyboard"
 
     def room_puzzle(self):
-        print("You look at the message on the laptop screen")
+        print("You look at the message on the screen")
         print('{:^50}'.format("I went to the woods and I got IT"))
         print('{:^50}'.format("I couldn't get IT"))
         print('{:^50}'.format("So I left IT there"))
@@ -160,16 +157,12 @@ class room7(room1):
         self.y = 1
         self.room_name = 7
 
-        self.solution = "placeholder"
+        self.solution = "tongue"
         self.item = "placeholder"
 
     def room_puzzle(self):
-        print("You look at the message on the laptop screen")
-        print('{:^50}'.format("I went to the woods and I got IT"))
-        print('{:^50}'.format("I couldn't get IT"))
-        print('{:^50}'.format("So I left IT there"))
-        print('{:^50}'.format("and took IT home with me."))
-        return '{:^50}'.format("What was IT?\n")
+        print("You look at the message on the screen")
+        return '{:^50}'.format("What tastes better than it smells?\n")
 
 
 class room8(room1):
@@ -181,16 +174,13 @@ class room8(room1):
         self.room_name = 8
 
         self.look = "more and more and more placeholder text"
-        self.solution = "placeholder"
+        self.solution = "leaves"
         self.item = "placeholder"
 
     def room_puzzle(self):
-        print("You look at the message on the laptop screen")
-        print('{:^50}'.format("I went to the woods and I got IT"))
-        print('{:^50}'.format("I couldn't get IT"))
-        print('{:^50}'.format("So I left IT there"))
-        print('{:^50}'.format("and took IT home with me."))
-        return '{:^50}'.format("What was IT?\n")
+        print("You look at the message on the screen")
+        print("Walk on the living, they don't even mumble.\nWalk on the dead, they mutter and grumble.")
+        return '{:^50}'.format(" What are they\n")
 
 
 class room9(room1):
@@ -205,13 +195,9 @@ class room9(room1):
         self.y = 1
         self.room_name = 9
 
-        self.solution = "placeholder"
+        self.solution = "short"
         self.item = "placeholder"
 
     def room_puzzle(self):
-        print("You look at the message on the laptop screen")
-        print('{:^50}'.format("I went to the woods and I got IT"))
-        print('{:^50}'.format("I couldn't get IT"))
-        print('{:^50}'.format("So I left IT there"))
-        print('{:^50}'.format("and took IT home with me."))
-        return '{:^50}'.format("What was IT?\n")
+        print("You look at the message on the screen")
+        return '{:^50}'.format("What gets shorter when you add two letters to it?\n")
