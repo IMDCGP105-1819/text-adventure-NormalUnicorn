@@ -9,6 +9,8 @@ user = player.Player()
 choice = ""
 #used to track all the rooms the player has solved
 
+
+#Movement functions
 def move(direction):
     global current_room
     global user
@@ -76,6 +78,8 @@ def update_room():
     room_inventory()
     print("You have moved to room " + str(current_room.room_name) + "\n")
 
+
+#Puzzle related functions
 def total_solved():
     global current_room
     global user
@@ -112,6 +116,15 @@ def solved(user_solution, room_solution):
 
     total_solved()
 
+def puzzle():
+    global current_room
+    global user
+    """
+    This function prints out the puzzle in the current room
+    """
+    print(current_room.room_puzzle())
+
+#inventory related functions
 def use_item(input_item):
     global current_room
     global user
@@ -220,37 +233,42 @@ def drop_item(input_item):
         item = input("Please input an item to drop: ")
         drop_item(item)
 
-
-def puzzle():
-    global current_room
-    global user
-    """
-    This function prints out the puzzle in the current room
-    """
-    print(current_room.room_puzzle())
-
-
-def inventory():
+#
+def inventory(input):
     global current_room
     global user
     """
     This function prints out the player inventory
     """
-    print(user.inventory)
+    if input == "player" or input == "user":
+        print(user.inventory)
+    elif input == "room":
+        with open('inventory.txt', 'r') as file:
+            inventory = file.readlines()
+            current_inventory = inventory[(current_room.room_name)-1]
+            print(current_inventory)
+        file.close()
+    elif input == "c":
+        return None
+    else:
+        new_input = input("That isn't a recognised command, please input either room or user:")
+        inventory(new_input)
 
 
-def look_room_items():
+def look(item):
     global current_room
-    global user
-    """
-    this function opens the invetory file to find out which items are in the current room
-    it then prints out what items are in the current room
-    """
-    with open('inventory.txt', 'r') as file:
-        inventory = file.readlines()
-        current_inventory = inventory[(current_room.room_name)-1]
-        print(current_inventory)
-    file.close()
+    if item == "map":
+        print("A map that shows your current location")
+    elif item == "notebook":
+        print("A notebook with a few pages.\nOn the first page is written: Your task is to go to all rooms and solve all the riddles.\nOnce You have done this you will be given a key and will have to find the keyhole.\nUse this notebook to keep track of the rooms you have solved")
+    elif item == "room":
+        print(current_room.look)
+    elif item == "c":
+        return None
+    else:
+        new_item = input("That isn't a recognised item, please input a recognised item:")
+        look(new_item)
+
 
 
 def direct():
@@ -258,6 +276,7 @@ def direct():
     global user
     print("List of available exits from this room:")
     print(", ".join(current_room.directions))
+
 
 def help():
     global current_room
@@ -310,9 +329,7 @@ while choice != "q":
         if command == "move" or command == "m":
             move(usage)
         elif command == "inv" or command == "i" or command == "inventory":
-            inventory()
-        elif command == "room" and usage == "items":
-            look_room_items()
+            inventory(usage)
         elif command == "puzzle":
             puzzle()
         elif command == "drop" or command == "d":
@@ -323,8 +340,8 @@ while choice != "q":
             use_item(usage)
         elif command == "--help":
             help()
-        elif command == "look" and usage == "room":
-            print(current_room.look)
+        elif command == "look":
+            look(usage)
         elif command == "directions":
             direct()
         elif command == "q":
