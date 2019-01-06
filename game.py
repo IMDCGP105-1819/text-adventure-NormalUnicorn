@@ -287,7 +287,7 @@ with open('inventory.txt', 'w') as file:
 room_inventory()
 
 #acts as the start of the game
-print(current_room.look())
+print(current_room.look)
 
 while choice != "q":
     """
@@ -324,7 +324,7 @@ while choice != "q":
         elif command == "--help":
             help()
         elif command == "look" and usage == "room":
-            print(current_room.look())
+            print(current_room.look)
         elif command == "directions":
             direct()
         elif command == "q":
