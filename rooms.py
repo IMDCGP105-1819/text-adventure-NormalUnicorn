@@ -46,7 +46,6 @@ class room2(room1):
         self.y = 3
         self.room_name = 2
 
-        self.item = "placeholder"
         self.solution = "dentist"
 
     def room_puzzle(self):
@@ -68,7 +67,6 @@ class room3(room1):
         self.room_name = 3
 
         self.solution = "night"
-        self.item = "placeholder"
 
 
     def room_puzzle(self):
@@ -153,7 +151,6 @@ class room7(room1):
         self.room_name = 7
 
         self.solution = "tongue"
-        self.item = "placeholder"
 
     def room_puzzle(self):
         print("You look at the message on the screen")
@@ -170,7 +167,6 @@ class room8(room1):
 
         self.look = "more and more and more placeholder text"
         self.solution = "leaves"
-        self.item = "placeholder"
 
     def room_puzzle(self):
         print("You look at the message on the screen")
@@ -191,8 +187,7 @@ class room9(room1):
         self.room_name = 9
 
         self.solution = "short"
-        self.item = "placeholder"
-
+        
     def room_puzzle(self):
         print("You look at the message on the screen")
         return '{:^50}'.format("What gets shorter when you add two letters to it?\n")

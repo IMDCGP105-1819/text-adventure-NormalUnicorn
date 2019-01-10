@@ -144,6 +144,10 @@ def use_item(input_item):
             print(user.map())
         elif input_item == "notebook":
             print(user.notebook())
+        elif input_item == "key" and current_room.room_name == "6" and barrel not in current_room.inventory:
+            victory()
+        elif input_item == "barrel":
+            print("A rather useless barrel")
     else:
         print("That item has no use in this room.")
         item_input = str(input("Please enter an item to use:")).lower()
@@ -169,6 +173,8 @@ def room_inventory():
 
 
 def pickup_item(input_item):
+    if input_item == None:
+        return None
     global current_room
     global user
     """
@@ -204,6 +210,8 @@ def pickup_item(input_item):
 
 
 def drop_item(input_item):
+    if input_item == None:
+        return None
     global current_room
     global user
     """
@@ -239,6 +247,8 @@ def drop_item(input_item):
 
 #
 def inventory(input):
+    if input == None:
+        return None
     global current_room
     global user
     """
