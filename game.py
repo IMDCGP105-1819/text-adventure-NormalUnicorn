@@ -111,8 +111,11 @@ def solved(user_solution, room_solution):
         print("You have solved room " + str(current_room.room_name))
         user.solved_dict.pop(str(current_room.room_name), None)
         user.solved_dict[str(current_room.room_name)] = "y"
+    elif user_solution == "c":
+        return None
     else:
         print("That is not the correct answer sorry!")
+        use_item("keyboard")
 
     total_solved()
 
@@ -133,8 +136,9 @@ def use_item(input_item):
     """
     if input_item == "c":
         return None
-    elif current_room.correct_item(input_item):
-        solved(current_room.use_item(input_item), current_room.solution)
+    elif input_item == "keyboard":
+        user_answer = input(current_room.room_puzzle())
+        solved(user_answer, current_room.solution)
     elif input_item in user.inventory:
         if input_item == "map":
             print(user.map())

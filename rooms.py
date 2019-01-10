@@ -67,17 +67,12 @@ class room3(room1):
         self.y = 3
         self.room_name = 3
 
-        self.solution = "placeholder"
+        self.solution = "night"
         self.item = "placeholder"
 
 
     def room_puzzle(self):
-        print("You look at the message on the screen")
-        print('{:^50}'.format("I went to the woods and I got IT"))
-        print('{:^50}'.format("I couldn't get IT"))
-        print('{:^50}'.format("So I left IT there"))
-        print('{:^50}'.format("and took IT home with me."))
-        return '{:^50}'.format("What was IT?\n")
+        return '{:^50}'.format("What falls, but does not break, while its opposite breaks but does not fall\n")
 
 
 # MIDDLE ROW OF ROOMS
