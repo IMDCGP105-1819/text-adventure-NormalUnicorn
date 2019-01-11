@@ -10,6 +10,11 @@ choice = ""
 #used to track all the rooms the player has solved
 
 
+def victory():
+    print("I hope playing this game has provided you with a sense of pride and accomplishment")
+    print("Bye bye world")
+    quit()
+
 #Movement functions
 def move(direction):
     global current_room
@@ -89,6 +94,7 @@ def total_solved():
     as such it adds the key item to the user inventory
     it returns true or false to determine if the key item can be used or not
     """
+    #https://stackoverflow.com/questions/35253971/how-to-check-if-all-values-of-a-dictionary-are-0-in-python
     solved = all(value == "y" for value in user.solved_dict.values())
     if solved == True:
         print("You solved all the puzzles and are rewarded with a key!")
@@ -144,7 +150,7 @@ def use_item(input_item):
             print(user.map())
         elif input_item == "notebook":
             print(user.notebook())
-        elif input_item == "key" and current_room.room_name == "6" and barrel not in current_room.inventory:
+        elif input_item == "key" and current_room.room_name == 6 and "barrel" not in current_room.inventory:
             victory()
         elif input_item == "barrel":
             print("A rather useless barrel")

@@ -22,8 +22,8 @@ class room1(object):
 
 
     def use_item(self, user_item):
-            user_solution = input("Please input what you think the answer is:")
-            return user_solution
+            user_solution = str(input("Please input what you think the answer is:"))
+            return user_solution.lower()
 
     def correct_item(self, user_item):
         if self.item in user_item:
@@ -187,7 +187,7 @@ class room9(room1):
         self.room_name = 9
 
         self.solution = "short"
-        
+
     def room_puzzle(self):
         print("You look at the message on the screen")
         return '{:^50}'.format("What gets shorter when you add two letters to it?\n")
